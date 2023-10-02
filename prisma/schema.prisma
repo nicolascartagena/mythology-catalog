@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Mythology {
+  id        Int    @id @default(autoincrement())
+  code_name String
+  God       God[]
+}
+
+model Area {
+  id        Int    @id @default(autoincrement())
+  code_name String
+  God       God[]
+}
+
+model Power {
+  id        Int    @id @default(autoincrement())
+  code_name String
+  God       God[]
+}
+
+model God {
+  id          Int       @id @default(autoincrement())
+  code_name   String
+  alias       String
+  mythology   Mythology @relation(fields: [mythologyId], references: [id])
+  mythologyId Int
+  area        Area      @relation(fields: [areaId], references: [id])
+  areaId      Int
+  power       Power     @relation(fields: [powerId], references: [id])
+  powerId     Int
+  description String
+  image       String
+}
