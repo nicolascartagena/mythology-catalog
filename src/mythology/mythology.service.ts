@@ -9,4 +9,8 @@ export class MythologyService {
     async findAll(): Promise<Mythology[]> {
         return this.prisma.mythology.findMany();
     }
+
+    async createMythology(data: Prisma.MythologyCreateInput): Promise<Mythology> {
+        return this.prisma.mythology.create({ data });
+    }
 }
