@@ -24,3 +24,8 @@ class ValidationError extends Error {
     }
 }
 */
+
+/*
+se tiene que verificar el e.name para saber que tipo de error es
+si sucede algo, debe lanzarse un throw new ConnectionError('mensaje')
+*/
